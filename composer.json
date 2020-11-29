@@ -39,7 +39,7 @@
             "./Module.php"
         ],
         "files": [
-            "src/LaminasLogger/StaticLogger.php"
+            "src/StaticLogger.php"
         ]
     },
     "scripts": {
