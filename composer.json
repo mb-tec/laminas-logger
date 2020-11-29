@@ -23,6 +23,7 @@
         "laminas/laminas-http": "^2.13"
     },
     "require-dev": {
+        "laminas/laminas-coding-standard": "^1.0",
         "phan/phan": "^3.2"
     },
     "suggest": {
@@ -32,6 +33,9 @@
         "psr-4": {
             "MBtec\\LaminasLogger\\": "src/LaminasLogger/"
         },
+        "classmap": [
+            "./Module.php"
+        ],
         "files": [
             "src/LaminasLogger/StaticLogger.php"
         ]
