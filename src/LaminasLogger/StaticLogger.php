@@ -8,12 +8,11 @@
 
 declare(strict_types=1);
 
-namespace Core;
+namespace MBtec\LaminasLogger;
 
 use Laminas\Log\Filter;
 use Laminas\Log\Logger;
 use Laminas\Log\Writer\Stream;
-use MBtec\LaminasLogger\Writer\SlackWriter;
 
 class StaticLogger
 {
@@ -111,7 +110,7 @@ class StaticLogger
             }
 
             if (isset($config['slack']['enabled']) && $config['slack']['enabled']) {
-                $slackWriter = new SlackWriter($config['slack']['webhook_url']);
+                $slackWriter = new Writer\SlackWriter($config['slack']['webhook_url']);
 
                 if ($config['slack']['formatter']) {
                     $slackWriter->setFormatter($config['slack']['formatter']);

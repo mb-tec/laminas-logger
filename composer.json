@@ -31,15 +31,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Api\\": "module/Api/src/",
-            "Application\\": "module/Application/src/",
-            "Core\\": "module/Core/src/"
+            "MBtec\\LaminasLogger\\": "src/LaminasLogger/"
         },
         "files": [
-            "module/Core/src/SlackFormatter.php",
-            "module/Core/src/SlackWriter.php",
-            "module/Core/src/StaticLogger.php",
-            "module/Core/src/StaticVars.php"
+            "src/LaminasLogger/StaticLogger.php"
         ]
     }
 }
