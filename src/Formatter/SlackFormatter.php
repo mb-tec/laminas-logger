@@ -52,25 +52,14 @@ class SlackFormatter extends Base
             'text' => $message,
             'color' => $color,
             'mrkdwn_in' => ['text'],
-            'fields' => $this->getFieldsData($messageRawData),
+            'fields' => $this->getFieldsData($messageRawData, $baseOutput),
             'ts' => $event['timestamp']
         ];
-
-        foreach ($baseOutput['extra'] as $key => $value) {
-            if ($key == 'channel') {
-                continue;
-            }
-
-            $attachment['fields'][] = [
-                'title' => $key,
-                'value' => $value
-            ];
-        }
 
         return ['attachments' => [$attachment]];
     }
 
-    private function getFieldsData(array $messageRawData): array
+    private function getFieldsData(array $messageRawData, array $baseOutput): array
     {
         $fields = [];
 
@@ -84,6 +73,17 @@ class SlackFormatter extends Base
                     'short' => true,
                 ];
             }
+        }
+
+        foreach ($baseOutput['extra'] as $key => $value) {
+            if ($key == 'channel') {
+                continue;
+            }
+
+            $fields[] = [
+                'title' => $key,
+                'value' => $value
+            ];
         }
 
         return $fields;
