@@ -32,6 +32,9 @@
         "laminas/laminas-modulemanager": "To use it as a Laminas Framework module"
     },
     "autoload": {
+        "psr-0": {
+            "MBtec\\LaminasLogger\\": "src/"
+        },
         "psr-4": {
             "MBtec\\LaminasLogger\\": "src/"
         },
