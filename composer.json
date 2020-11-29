@@ -28,9 +28,6 @@
         "laminas/laminas-coding-standard": "^1.0",
         "phan/phan": "^3.2"
     },
-    "suggest": {
-        "laminas/laminas-modulemanager": "To use it as a Laminas Framework module"
-    },
     "autoload": {
         "psr-0": {
             "MBtec\\LaminasLogger\\": "src/"

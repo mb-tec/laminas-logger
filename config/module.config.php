@@ -7,7 +7,8 @@
  */
 
 use Laminas\Log\Logger;
-use MBtec\LaminasLogger;
+use MBtec\LaminasLogger\Service;
+use MBtec\LaminasLogger\Formatter;
 
 return [
     'mbtec' => [
@@ -21,7 +22,7 @@ return [
             'slack' => [
                 'enabled' => false,
                 'webhook_url' => '',
-                'formatter' => LaminasLogger\Formatter\SlackFormatter::class,
+                'formatter' => Formatter\SlackFormatter::class,
                 'filter' => Logger::NOTICE,
             ],
         ],
@@ -29,7 +30,7 @@ return [
 
     'service_manager' => [
         'factories' => [
-            LaminasLogger\Service\LoggerService::class => LaminasLogger\Service\LoggerServiceFactory::class,
+            Service\LoggerService::class => Service\LoggerServiceFactory::class,
         ],
     ],
 ];
