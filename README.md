@@ -1,9 +1,8 @@
 README.md# laminas-logger
 ## Logger Service for the Laminas Framework
-[![Build Status](https://travis-ci.org/influxdata/influxdb-php.svg?branch=master)](https://travis-ci.org/influxdata/influxdb-php)
-[![Code Climate](https://codeclimate.com/github/influxdata/influxdb-php/badges/gpa.svg)](https://codeclimate.com/github/influxdata/influxdb-php)
-[![Test Coverage](https://codeclimate.com/github/influxdata/influxdb-php/badges/coverage.svg)](https://codeclimate.com/github/influxdata/influxdb-php/coverage)
-
+[![Build Status](https://travis-ci.org/mb-tec/laminas-logger.svg?branch=master)](https://travis-ci.org/mb-tec/laminas-logger)
+[![Code Climate](https://api.codeclimate.com/v1/badges/b2aa5aac3ed5189bcbe2/maintainability)](https://codeclimate.com/github/mb-tec/laminas-logger/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/b2aa5aac3ed5189bcbe2/test_coverage)](https://codeclimate.com/github/mb-tec/laminas-logger/test_coverage)
 
 ## Todo
 
