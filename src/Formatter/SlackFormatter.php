@@ -38,7 +38,6 @@ class SlackFormatter extends Base
      */
     public function format($event)
     {
-        //the base formatter consolidates the 'extra' array to a single level array
         $baseOutput = parent::format($event);
 
         $messageRaw = $baseOutput['message'];
@@ -53,21 +52,9 @@ class SlackFormatter extends Base
             'text' => $message,
             'color' => $color,
             'mrkdwn_in' => ['text'],
-            'fields' => [],
+            'fields' => $this->getFieldsData($messageRawData),
             'ts' => $event['timestamp']
         ];
-
-        if (count($messageRawData) > 1) {
-            for ($i = 1; $i < count($messageRawData); ++$i) {
-                $fieldData = explode(':', $messageRawData[$i], 2);
-
-                $attachment['fields'][] = [
-                    'title' => $fieldData[0],
-                    'value' => $fieldData[1] ?? 'unknown value',
-                    'short' => true,
-                ];
-            }
-        }
 
         foreach ($baseOutput['extra'] as $key => $value) {
             if ($key == 'channel') {
@@ -80,10 +67,25 @@ class SlackFormatter extends Base
             ];
         }
 
-        return [
-            'attachments' => [
-                $attachment,
-            ],
-        ];
+        return ['attachments' => [$attachment]];
+    }
+
+    private function getFieldsData(array $messageRawData): array
+    {
+        $fields = [];
+
+        if (count($messageRawData) > 1) {
+            for ($i = 1; $i < count($messageRawData); ++$i) {
+                $fieldData = explode(':', $messageRawData[$i], 2);
+
+                $fields[] = [
+                    'title' => $fieldData[0],
+                    'value' => $fieldData[1] ?? 'unknown value',
+                    'short' => true,
+                ];
+            }
+        }
+
+        return $fields;
     }
 }
