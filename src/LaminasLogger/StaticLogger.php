@@ -94,8 +94,10 @@ class StaticLogger
             $config = static::getConfig();
             $logger = new Logger();
 
-            if (isset($config['stream']['enabled']) && $config['stream']['enabled']) {
-                $path = rtrim($config['stream']['enabled'], '/');
+            if (isset($config['stream']['enabled'])
+                && $config['stream']['enabled']
+                && $config['stream']['dir']) {
+                $path = rtrim($config['stream']['dir'], '/');
                 $streamWriter = new Stream($path . DIRECTORY_SEPARATOR . $logfile);
 
                 if ($config['stream']['formatter']) {
@@ -132,10 +134,9 @@ class StaticLogger
     private static function getConfig(): array
     {
         if (!is_array(static::$config)) {
-            chdir(dirname(dirname(__DIR__)));
-
-            if (file_exists('config/autoload/mbtec.laminas-logger.local.php')) {
-                $config = require_once 'config/autoload/mbtec.laminas-logger.local.php';
+            $configFile = dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/config/autoload/mbtec.laminas-logger.local.php';
+            if (file_exists($configFile)) {
+                $config = require_once $configFile;
             } else {
                 $config = require_once dirname(__DIR__) . '/config/module.config.php';
             }
