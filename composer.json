@@ -1,0 +1,45 @@
+{
+    "name": "mb-tec/laminas-logger",
+    "description": "Logger Service for Laminas Framework",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "mb-tec",
+        "laminas",
+        "log",
+        "framework"
+    ],
+    "authors": [
+        {
+            "name": "Matthias Büsing",
+            "email": "info@mb-tec.eu"
+        }
+    ],
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4",
+        "laminas/laminas-log": "^2.13",
+        "laminas/laminas-http": "^2.13",
+        "laminas/laminas-modulemanager": "^2.10"
+    },
+    "require-dev": {
+        "phan/phan": "^3.2"
+    },
+    "suggest": {
+        "laminas/laminas-modulemanager": "To use it as a Laminas Framework module"
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\": "module/Api/src/",
+            "Application\\": "module/Application/src/",
+            "Core\\": "module/Core/src/"
+        },
+        "files": [
+            "module/Core/src/SlackFormatter.php",
+            "module/Core/src/SlackWriter.php",
+            "module/Core/src/StaticLogger.php",
+            "module/Core/src/StaticVars.php"
+        ]
+    }
+}

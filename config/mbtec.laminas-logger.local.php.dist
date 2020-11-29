@@ -1,0 +1,19 @@
+<?php
+return [
+    'mbtec' => [
+        'laminas-logger' => [
+            'stream' => [
+                'enabled' => true,
+                'dir' => 'data/log/',
+                'formatter' => null,
+                'filter' => null,
+            ],
+            'slack' => [
+                'enabled' => false,
+                'webhook_url' => '',
+                'formatter' => LaminasLogger\Formatter\SlackFormatter::class,
+                'filter' => Logger::NOTICE,
+            ],
+        ],
+    ],
+];
