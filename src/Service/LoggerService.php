@@ -99,8 +99,11 @@ class LoggerService
         if (!isset($this->loggers[$logfile])) {
             $logger = new Logger();
 
-            if (isset($this->config['stream']['enabled']) && $this->config['stream']['enabled']) {
-                $path = rtrim($this->config['stream']['enabled'], '/');
+            if (isset($this->config['stream']['enabled'])
+                && $this->config['stream']['enabled']
+                && $this->config['stream']['dir']
+            ) {
+                $path = rtrim($this->config['stream']['dir'], '/');
                 $streamWriter = new Stream($path . DIRECTORY_SEPARATOR . $logfile);
 
                 if (isset($this->config['stream']['formatter']) && $this->config['stream']['formatter']) {

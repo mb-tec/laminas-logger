@@ -96,7 +96,8 @@ class StaticLogger
 
             if (isset($config['stream']['enabled'])
                 && $config['stream']['enabled']
-                && $config['stream']['dir']) {
+                && $config['stream']['dir']
+            ) {
                 $path = rtrim($config['stream']['dir'], '/');
                 $streamWriter = new Stream($path . DIRECTORY_SEPARATOR . $logfile);
 
