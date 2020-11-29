@@ -20,8 +20,7 @@
     "require": {
         "php": "^7.4",
         "laminas/laminas-log": "^2.13",
-        "laminas/laminas-http": "^2.13",
-        "laminas/laminas-modulemanager": "^2.10"
+        "laminas/laminas-http": "^2.13"
     },
     "require-dev": {
         "phan/phan": "^3.2"
