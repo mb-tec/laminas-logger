@@ -103,11 +103,11 @@ class LoggerService
                 $path = rtrim($this->config['stream']['enabled'], '/');
                 $streamWriter = new Stream($path . DIRECTORY_SEPARATOR . $logfile);
 
-                if ($this->config['stream']['formatter']) {
+                if (isset($this->config['stream']['formatter']) && $this->config['stream']['formatter']) {
                     $streamWriter->setFormatter($this->config['stream']['formatter']);
                 }
 
-                if ($this->config['stream']['filter']) {
+                if (isset($this->config['stream']['filter']) && $this->config['stream']['filter']) {
                     $streamWriter->addFilter(new Filter\Priority($this->config['stream']['filter']));
                 }
 
@@ -115,17 +115,19 @@ class LoggerService
             }
 
             if (isset($this->config['slack']['enabled']) && $this->config['slack']['enabled']) {
-                $slackWriter = new SlackWriter($this->config['slack']['webhook_url']);
+                if (isset($this->config['slack']['webhook_url']) && $this->config['slack']['webhook_url']) {
+                    $slackWriter = new SlackWriter($this->config['slack']['webhook_url']);
 
-                if ($this->config['slack']['formatter']) {
-                    $slackWriter->setFormatter($this->config['slack']['formatter']);
+                    if (isset($this->config['slack']['formatter']) && $this->config['slack']['formatter']) {
+                        $slackWriter->setFormatter($this->config['slack']['formatter']);
+                    }
+
+                    if (isset($this->config['slack']['filter']) && $this->config['slack']['filter']) {
+                        $slackWriter->addFilter(new Filter\Priority($this->config['slack']['filter']));
+                    }
+
+                    $logger->addWriter($slackWriter);
                 }
-
-                if ($this->config['slack']['filter']) {
-                    $slackWriter->addFilter(new Filter\Priority($this->config['slack']['filter']));
-                }
-
-                $logger->addWriter($slackWriter);
             }
 
             $this->loggers[$logfile] = $logger;
