@@ -30,6 +30,9 @@
         "laminas/laminas-modulemanager": "To use it as a Laminas Framework module"
     },
     "autoload": {
+        "psr-0": {
+            "MBtec\\LaminasLogger\\": "src/LaminasLogger/"
+        },
         "psr-4": {
             "MBtec\\LaminasLogger\\": "src/LaminasLogger/"
         },
@@ -39,5 +42,8 @@
         "files": [
             "src/LaminasLogger/StaticLogger.php"
         ]
+    },
+    "scripts": {
+        "phan": "phan"
     }
 }
