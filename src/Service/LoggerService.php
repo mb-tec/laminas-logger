@@ -101,6 +101,7 @@ class LoggerService
 
             if (isset($this->config['stream']['enabled'])
                 && $this->config['stream']['enabled']
+                && isset($this->config['stream']['dir'])
                 && $this->config['stream']['dir']
             ) {
                 $path = rtrim($this->config['stream']['dir'], '/');
